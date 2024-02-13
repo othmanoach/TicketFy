@@ -51,7 +51,32 @@ def submit_ticket():
             json.dump({serial_number: ticket_info}, file)
     # Generate a simple text-based ticket for printing or saving as PDF
     # Generate a simple HTML page that can be printed or saved as PDF
-
+    ticket_html = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Confirmation</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; }}
+            .ticket-container {{ margin: auto; width: 600px; border: 1px solid #ccc; padding: 20px; }}
+            .ticket-info {{ margin: 10px 0; }}
+        </style>
+    </head>
+    <body>
+        <div class="ticket-container">
+            <h2>Ticket Confirmation</h2>
+            <div class="ticket-info"><strong>Serial Number:</strong> {serial_number}</div>
+            <div class="ticket-info"><strong>Name:</strong> {name}</div>
+            <div class="ticket-info"><strong>Phone:</strong> {phone}</div>
+            <div class="ticket-info"><strong>Email:</strong> {email}</div>
+            <div class="ticket-info"><strong>Number of Tickets:</strong> {ticket_info['tickets']}</div>
+            <div class="ticket-info"><strong>Time:</strong> {datetime.now().isoformat()}</div>
+        </div>
+    </body>
+    </html>
+    """
     ticket_html = f"""
     <!DOCTYPE html>
     <html lang="en">
