@@ -11,19 +11,20 @@
         }
         .container {
             text-align: center;
-            padding: 50px;
+            padding: 250px;
         }
         button {
             margin: 20px;
-            padding: 10px;
+            padding: 50px;
+			background-image: url('{{ url_for('static', filename='images/download.jpg') }}');
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Our Ticket Booking System</h1>
-        <button onclick="location.href='book_ticket.html'">Book a Ticket</button>
-        <button onclick="location.href='verify_ticket.html'">Verify Ticket</button>
+        <h1 style="color:red;">Welcome to Our Ticket Booking System</h1>
+        <button style="font-size:30px; color:red;" onclick="location.href='book_ticket'"><strong>Book a Ticket</strong></button>
+        <button style="font-size:30px; color:red;" onclick="location.href='verify_ticket'"><strong>Verify Ticket</strong></button>
     </div>
 </body>
 </html>

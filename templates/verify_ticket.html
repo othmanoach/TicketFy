@@ -4,11 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Ticket</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='images/background.jpg') }}');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            padding: 50px;
+            color: red;
+            font-size: 60px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            <!-- background-image: url('{{ url_for('static', filename='images/download.jpg') }}'); -->
+            <!-- background-size: cover; -->
+        }
+        input[type="text"] {
+            margin: 15px;
+            padding: 8px;
+            font-size: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="submit"] {
+            text-align: center;
+            font-size: 30px;
+            color: red;
+            margin: 15px;
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Verify Your Ticket</h1>
     <form action="/check_ticket" method="post">
-        Ticket Serial Number: <input type="text" name="serial"><br>
+        Ticket Serial Number: <input type="text" name="serial" placeholder="Enter Serial Number"><br>
         <input type="submit" value="Verify">
     </form>
 </body>

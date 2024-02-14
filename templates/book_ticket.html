@@ -4,15 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Ticket</title>
+	    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='images/background.jpg') }}');
+            background-size: cover;
+        }
+        h1 {
+            text-align: center;
+            padding: 50px;
+			color: red;
+        }
+        form {
+			position: center;
+            margin-left: 30%;
+			color: red;
+			background-image: url('{{ url_for('static', filename='images/download.jpg') }}');
+			margin-right: 500px;
+            background-size: 50%;
+			font-size:30px;
+        }
+		input {
+			margin: 15px;
+			
+            margin-left: 10px;
+            padding: 8px;
+			
+			}
+    </style>
 </head>
 <body>
-    <h1>Book Your Ticket</h1>
+    <h1 style="font-size:60px;">Book Your Ticket</h1>
     <form action="/submit_ticket" method="post">
-        Name: <input type="text" name="name"><br>
-        Phone Number: <input type="text" name="phone"><br>
-        Email: <input type="email" name="email"><br>
-        Number of Tickets: <input type="number" name="tickets"><br>
-        <input type="submit" value="Submit" formtarget="_blank">
-    </form>
+        Name: <input style="padding-left: 20%;margin-left: 208px;"type="text" name="name"><br>
+        Phone Number: <input style="padding-left: 20%;margin-left: 100px;"type="text" name="phone"><br>
+        Email: <input style="padding-left: 20%;margin-left: 205px;" type="email" name="email"><br>
+        Number of Tickets: <input style="padding-left: 20%; margin-left: 55px;" type="number" name="tickets"><br>
+        <input style="text-align:center;font-size:30px;color:red; margin-left: 290px; padding-left:100px; padding-right:110px;padding-bottom:10px" type="submit" value="Submit" formtarget="_blank">
 </body>
 </html>

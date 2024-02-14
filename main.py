@@ -129,5 +129,5 @@ def check_ticket():
 if __name__ == "__main__":
     configure_logging()
     remove_old_tickets()
-    options = {"bind": "%s:%s" % ("0.0.0.0", "8080"), "workers": 4, "loglevel": "warn"}
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    options = {"bind": "%s:%s" % ("0.0.0.0", "30120"), "workers": 4, "loglevel": "warn"}
+    app.run(host="0.0.0.0", port=30120, debug=True)
