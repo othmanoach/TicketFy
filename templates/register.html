@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body { 
+            background-image: url('https://img.freepik.com/premium-vector/hand-drawn-minimal-abstract-blue-grey-shape-background_643365-41.jpg'); 
+            background-size: cover; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% if request.cookies.get('username') %}
+        <div style="position: absolute; top: 0; right: 0;">
+            <span>{{ request.cookies.get('username') }}</span> | <a href="/purchase_history">Purchase History</a> | <a href="/register">Purchase Ticket</a> | <a href="/admin">Settings</a>
+            <form action="/logout" method="post">
+                <input type="submit" value="Disconnect">
+            </form>
+        </div>
+    {% endif %}
+    <form action="/register" method="post">
+    <h1 style="font-size: 2em;">Register for a Ticket</h1>
+        <label for="fname">First Name:</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="lname">Family Name:</label><br>
+        <input type="text" id="lname" name="lname" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="type">Ticket Type:</label><br>
+        <select id="type" name="type">
+            <option value="cinema">Cinema</option>
+            <option value="train">Train</option>
+            <option value="shop">Shop</option>
+        </select><br>
+        <input type="submit" value="Purchase">
+    </form> 
+</body>
+</html>
