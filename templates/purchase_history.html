@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History</title>
+    <style>
+        body{
+        background-image: url('https://img.freepik.com/premium-vector/hand-drawn-minimal-abstract-blue-grey-shape-background_643365-41.jpg'); 
+        background-size: cover; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <h1>Purchase History</h1>
+    {% if tickets %}
+        <ul>
+        {% for ticket in tickets %}
+            <li>{{ ticket.fname }} {{ ticket.lname }} - {{ ticket.email }} - {{ ticket.type }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tickets purchased yet.</p>
+    {% endif %}
+</body>
+</html>

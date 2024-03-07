@@ -39,10 +39,17 @@ deactivate nondestructive
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
+<<<<<<< HEAD
     export VIRTUAL_ENV=$(cygpath "C:\xampp\htdocs\ticket\env")
 else
     # use the path as-is
     export VIRTUAL_ENV="C:\xampp\htdocs\ticket\env"
+=======
+    export VIRTUAL_ENV=$(cygpath "C:\xampp\htdocs\tickets\env")
+else
+    # use the path as-is
+    export VIRTUAL_ENV="C:\xampp\htdocs\tickets\env"
+>>>>>>> 42ca38dca55be645db46c45bd844191b3bc1ea9f
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"
