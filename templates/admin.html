@@ -8,7 +8,7 @@
         body { 
             background-image: url('https://img.freepik.com/premium-vector/hand-drawn-minimal-abstract-blue-grey-shape-background_643365-41.jpg'); 
             background-size: cover; 
-            display: flex;
+            
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -26,13 +26,13 @@
     </style>
 </head>
 <body>
-    <h1 style="font-size: 2em;">Admin Dashboard</h1>
-    <table>
-        <tr>
+<h1 style="text-align: center; font-size: 2em;"><strong>Admin Dashboard</strong></h1>
+<table>
+    <tr>
             <th>Username</th>
             <th>Email</th>
             <th>Actions</th>
-        </tr>
+  </tr>
         {% for username, details in users.items() %}
         <tr>
             <td>{{ username }}</td>
@@ -43,6 +43,6 @@
             </td>
         </tr>
         {% endfor %}
-    </table>
+</table>
 </body>
 </html>

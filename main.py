@@ -1,24 +1,14 @@
-import platform
 from flask import Flask, render_template, request, send_file, redirect, url_for, make_response
 from fpdf import FPDF
 import os
-# Conditional import for Gunicorn to ensure compatibility with Windows
-if platform.system() != 'Windows':
-    from gunicorn.app.base import BaseApplication
+from gunicorn.app.base import BaseApplication
 from logging_config import configure_logging
 import logging
+from pdf2docx import Converter
 
 app = Flask(__name__)
 
-class PDF(FPDF):
-    def header(self):
-        self.set_font('Arial', 'B', 12)
-        self.cell(0, 10, 'Ticket', 0, 1, 'C')
-
-    def footer(self):
-        self.set_y(-15)
-        self.set_font('Arial', 'I', 8)
-        self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
+# Removed html_to_pdf function to reduce memory usage and replaced with direct template rendering
 
 @app.route("/", methods=["GET", "POST"])
 def root_route():
@@ -36,30 +26,8 @@ def register():
         lname = request.form['lname']
         email = request.form['email']
         ticket_type = request.form['type']
-        pdf = PDF()
-        pdf.add_page()
-        pdf.set_font("Arial", size=12)
-        pdf.cell(200, 10, txt=f"First Name: {fname}", ln=True)
-        pdf.cell(200, 10, txt=f"Family Name: {lname}", ln=True)
-        pdf.cell(200, 10, txt=f"Email: {email}", ln=True)
-        pdf.cell(200, 10, txt=f"Ticket Type: {ticket_type}", ln=True)
-        pdf_file_path = f"./tickets/{fname}_{lname}_ticket.pdf"
-        os.makedirs(os.path.dirname(pdf_file_path), exist_ok=True)
-        try:
-            pdf.output(pdf_file_path)
-        except Exception as e:
-            app.logger.error(f"Failed to save ticket PDF: {e}")
-            return "Internal Server Error", 500
-        # Save ticket details for purchase history
-        ticket_details = {'fname': fname, 'lname': lname, 'email': email, 'type': ticket_type}
-        tickets = load_tickets()
-        tickets.append(ticket_details)
-        try:
-            save_tickets(tickets)
-        except Exception as e:
-            app.logger.error(f"Failed to save ticket details: {e}")
-            return "Internal Server Error", 500
-        return send_file(pdf_file_path, as_attachment=True)
+        # Directly render the ticket template with the user's information, including a print button
+        return render_template('ticket_template.html', fname=fname, lname=lname, email=email, ticket_type=ticket_type, print_button=True)
     else:
         return render_template('register.html')
 
@@ -97,10 +65,12 @@ def register_user():
         email = request.form['email']
         users = load_users()
         if username in users or email in [user['email'] for user in users.values()]:
-            return render_template('register_user.html', message="Username or Email already exists"), 409
+            # Inform the user if the username or email is already in use
+            return render_template('register_user.html', message="Username or Email already in use. Please choose another.", username=username, email=email)
         users[username] = {'password': password, 'email': email}
         save_users(users)
-        return render_template('register_user.html', message="Registration successful. Redirecting to home page...")
+        # Redirect to the main page after successful registration
+        return redirect(url_for('root_route'))
     return render_template('register_user.html')
 
 @app.route("/admin", methods=["GET"])
@@ -163,25 +133,23 @@ def purchase_history():
     tickets = load_tickets()
     return render_template('purchase_history.html', tickets=tickets)
 
-# StandaloneApplication class definition is now conditional
-if platform.system() != 'Windows':
-    class StandaloneApplication(BaseApplication):
-        def __init__(self, app, options=None):
-            self.application = app
-            self.options = options or {}
-            super().__init__()
+class StandaloneApplication(BaseApplication):
+    def __init__(self, app, options=None):
+        self.application = app
+        self.options = options or {}
+        super().__init__()
 
-        def load_config(self):
-            config = {
-                key: value
-                for key, value in self.options.items()
-                if key in self.cfg.settings and value is not None
-            }
-            for key, value in config.items():
-                self.cfg.set(key.lower(), value)
+    def load_config(self):
+        config = {
+            key: value
+            for key, value in self.options.items()
+            if key in self.cfg.settings and value is not None
+        }
+        for key, value in config.items():
+            self.cfg.set(key.lower(), value)
 
-        def load(self):
-            return self.application
+    def load(self):
+        return self.application
 
 import json
 
@@ -211,13 +179,7 @@ users = load_users()
 
 if __name__ == "__main__":
     configure_logging()
-<<<<<<< HEAD
-    remove_old_tickets()
-    options = {"bind": "%s:%s" % ("0.0.0.0", "30120"), "workers": 4, "loglevel": "warn"}
-    app.run(host="0.0.0.0", port=30120, debug=True)
-=======
     app.run(host="0.0.0.0", port=5000)
 else:
     options = {"bind": "%s:%s" % ("0.0.0.0", "5000"), "workers": 4, "loglevel": "info"}
     StandaloneApplication(app, options).run()
->>>>>>> 42ca38dca55be645db46c45bd844191b3bc1ea9f
