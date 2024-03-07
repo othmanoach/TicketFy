@@ -7,7 +7,7 @@ import logging
 from pdf2docx import Converter
 
 app = Flask(__name__)
-
+# changed name off app from main.py to app.py
 # Removed html_to_pdf function to reduce memory usage and replaced with direct template rendering
 
 @app.route("/", methods=["GET", "POST"])
