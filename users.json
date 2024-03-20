@@ -1,0 +1,12 @@
+[
+    {
+        "username": "admin",
+        "email": "admin@admin.com",
+        "password_hash": "hashed_password"
+    },
+    {
+        "username": "mmgmolotov",
+        "email": "mmgmolotov@gmail.com",
+        "password_hash": "scrypt:32768:8:1$c0EcbD40TtumKGKV$e76bf7d82260e1901030383a8fc3b7343da2cdd22eeadc3c90282202f87ab8884a72ee4ca9d426410d0952b1489eb2ffef65c55e5d30eab4452d90b8dc68d46b"
+    }
+]

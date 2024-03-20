@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ticketing System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+body {font-family: "Open Sans"}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Navigation bar with social media icons -->
+<div class="w3-bar w3-black w3-hide-small">
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+    <a href="/login" class="w3-bar-item w3-button w3-right">Login</a>
+    <a href="/signup" class="w3-bar-item w3-button w3-right">Sign Up</a>
+  </div>
+  
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Ticketify</b></h1>
+    <h6>Your one-stop destination for event tickets</h6>
+  </header>
+
+  <!-- Image header -->
+  <header class="w3-display-container w3-wide" id="home">
+    <img class="w3-image" src="https://th.bing.com/th/id/OIG4.Xas7ekSFrFXoDVTvQGob?pid=ImgGn" alt="Ticketing System" width="1600" height="1060">
+    <div class="w3-display-left w3-padding-large">
+      <h1 class="w3-text-white">Welcome to Ticketfy</h1>
+      <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>Get Your Tickets Now</b></h1>
+      <h6><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off">Browse Events</a></h6>
+    </div>
+  </header>
+
+  <!-- Grid -->
+  <div class="w3-row w3-padding w3-border">
+
+    <!-- Ticketing options -->
+    <div class="w3-col l8 s12">
+    
+      <!-- Featured events -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>Featured Events</h3>
+          <h5>Check out our latest and hottest events</h5>
+        </div>
+
+        <div class="w3-justify">
+          <img src="https://th.bing.com/th/id/OIG4._v8uFBpxMZmlRiv55dzN?pid=ImgGn" alt="Event 1" style="width:100%" class="w3-padding-16">
+          <p><strong>Concert in the Park</strong> - Join us for an evening of live music and fun in the park. Don't miss out!</p>
+          <p class="w3-left"><a href="#" class="w3-button w3-white w3-border">Buy Tickets</a></p>
+          <div class="w3-clear"></div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- More events -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>Upcoming Events</h3>
+          <h5>Explore more events and plan your next outing</h5>
+        </div>
+
+        <div class="w3-justify">
+          <img src="https://th.bing.com/th/id/OIG1.JT46HS7GPpp9aMzi_UuU?pid=ImgGn" alt="Event 2" style="width:100%" class="w3-padding-16">
+          <p><strong>Movie Night Under the Stars</strong> - Grab your blankets and popcorn for a night of outdoor cinema magic.</p>
+          <p class="w3-left"><a href="#" class="w3-button w3-white w3-border">Buy Tickets</a></p>
+          <div class="w3-clear"></div>
+        </div>
+      </div>
+
+    <!-- END Ticketing options -->
+    </div>
+
+    <!-- About and Advertisement -->
+    <div class="w3-col l4">
+      <!-- About Ticketify -->
+<div class="w3-white w3-margin">
+    <img src="https://th.bing.com/th/id/OIG2.nssiSUg_jmGc.weXTo7D?pid=ImgGn" alt="About Ticketify" style="width:100%">
+    <div class="w3-container w3-black">
+      <h4>About Ticketify</h4>
+      <p>Your trusted platform for booking tickets to all your favorite events. Discover, book, and enjoy hassle-free experiences with Ticketify.</p>
+    </div>
+  </div>
+  <hr>
+  
+
+      <!-- Advertisement -->
+      <div class="w3-white w3-margin">
+        <img src="https://th.bing.com/th/id/OIG1.KskopNC7dAntmvbdp3a6?pid=ImgGn" alt="Advertisement" style="width:100%">
+        <div class="w3-container w3-black">
+          <h4>Advertise with Us</h4>
+          <p>Reach a wide audience by advertising your events or business on Ticketify. Contact us for more information.</p>
+        </div>
+      </div>
+
+    <!-- END About/Advertisement -->
+    </div>
+
+  <!-- END GRID -->
+  </div>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey" style="padding:32px">
+  <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <p>Powered by <a href="https://www.ticketify.com" target="_blank">Ticketfy</a></p>
+</footer>
+
+<script>
+// Function to handle toggling of comments
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// Function to handle like button click
+function likeFunction(x) {
+  x.style.fontWeight = "bold";
+  x.innerHTML = "✓ Liked";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background-image: url('https://th.bing.com/th/id/OIG2.lU7ab8A2PgXfCwtvW.Av?pid=ImgGn');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-top: 0;
+            padding-top: 30px;
+        }
+        form {
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 18px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Purchase Ticket</h1>
+    <div class="container">
+        <form action="/purchase_ticket" method="post" onsubmit="return validateForm()">
+            <label for="event_name">Event Name:</label>
+            <input type="text" id="event_name" name="event_name" required><br>
+            <label for="ticket_quantity">Ticket Quantity:</label>
+            <input type="number" id="ticket_quantity" name="ticket_quantity" required min="1" max="10" step="1"><br>
+            <label for="seat_preference">Seat Preference:</label>
+            <select id="seat_preference" name="seat_preference">
+                <option value="window">Window</option>
+                <option value="aisle">Aisle</option>
+                <option value="middle">Middle</option>
+            </select><br>
+            <input type="submit" value="Purchase">
+            <input type="reset" value="Reset">
+            <div class="error-message" id="error_message"></div>
+            <div id="confirmation_message" style="display: none;">Ticket purchased successfully!</div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var event_name = document.getElementById("event_name").value;
+            var ticket_quantity = document.getElementById("ticket_quantity").value;
+
+            if (event_name.trim() == "") {
+                document.getElementById("error_message").innerText = "Please enter the event name.";
+                return false;
+            }
+
+            if (ticket_quantity < 1 || ticket_quantity > 10) {
+                document.getElementById("error_message").innerText = "Please enter a valid ticket quantity (1-10).";
+                return false;
+            }
+
+            document.getElementById("error_message").innerText = "";
+            document.getElementById("confirmation_message").style.display = "block";
+            return true;
+        }
+    </script>
+</body>
+</html>
