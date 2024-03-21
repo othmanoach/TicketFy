@@ -22,7 +22,7 @@ Ticketify is a web application that provides a platform for booking tickets to v
 1. Clone the repository:
     
 bash
-    git clone <repository_url>
+    git clone <https://github.com/othmanoach/TicketFy.git>
     cd ticketify
     
 2. Install the dependencies:
