@@ -3,66 +3,42 @@
 <head>
     <meta charset="utf-8">
     <title>Glowing Inputs Sign Up Form UI</title>
-    <!-- Linking to external CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
-    <!-- Linking to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="signup-form">
-        <!-- Title for signup -->
         <div class="text">
             SIGN UP
         </div>
-        <!-- Form for submitting signup information -->
         <form action="/signup" method="POST">
-            <!-- Input field for full name -->
             <div class="field">
-                <!-- Icon for full name -->
                 <div class="fas fa-user"></div>
-                <!-- Input field for full name -->
                 <input type="text" name="full_name" placeholder="Full Name" required>
             </div>
-            <!-- Input field for username -->
             <div class="field">
-                <!-- Icon for username -->
                 <div class="fas fa-user"></div>
-                <!-- Input field for username -->
                 <input type="text" name="username" placeholder="Username" required>
             </div>
-            <!-- Input field for email -->
             <div class="field">
-                <!-- Icon for email -->
                 <div class="fas fa-envelope"></div>
-                <!-- Input field for email -->
                 <input type="email" name="email" placeholder="Email" required>
             </div>
-            <!-- Input field for password -->
             <div class="field">
-                <!-- Icon for password -->
                 <div class="fas fa-lock"></div>
-                <!-- Input field for password -->
                 <input type="password" name="password" placeholder="Password" required>
             </div>
-            <!-- Input field for confirm password -->
             <div class="field">
-                <!-- Icon for confirm password -->
                 <div class="fas fa-lock"></div>
-                <!-- Input field for confirm password -->
                 <input type="password" name="confirm_password" placeholder="Confirm Password" required>
             </div>
-            <!-- Checkbox for Terms of Service -->
             <div class="field">
                 <input type="checkbox" id="terms" name="terms" required>
                 <label for="terms">I agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</label>
             </div>
-            <!-- Google reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LdlKZspAAAAAPI4pKpZURenHMs4TFjq3UaJiTX7"></div>
-            <!-- Submit button for the form -->
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
             <button type="submit">SIGN UP</button>
-            <!-- Link for logging in if already a member -->
             <div class="link">
                 Already a member? <a href="/login">Login here</a>
             </div>

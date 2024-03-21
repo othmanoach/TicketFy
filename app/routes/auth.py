@@ -2,11 +2,16 @@ from flask import Blueprint, request, jsonify
 from werkzeug.security import check_password_hash
 from app.models import User
 from werkzeug.security import generate_password_hash
+from flask import render_template
 
 auth_bp = Blueprint('auth', __name__)
 
-@auth_bp.route('/register', methods=['POST'])
+@auth_bp.route('/signup', methods=['GET', 'POST'])
 def register():
+    if request.method == 'GET':
+        # Handle GET request, for example, render the signup form
+        return render_template('signup.html')
+
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -23,8 +28,12 @@ def register():
 
     return jsonify({'message': 'User registered successfully'}), 201
 
-@auth_bp.route('/login', methods=['POST'])
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'GET':
+        # Handle GET request, for example, render the login form
+        return render_template('login.html')
+
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
