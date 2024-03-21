@@ -11,10 +11,8 @@ def create_app():
     # Import and register blueprints
     from app.routes.main import main_bp
     from app.routes.auth import auth_bp
-    from app.routes.purchase_ticket import purchase_ticket_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
-    app.register_blueprint(purchase_ticket_bp)
 
     return app
